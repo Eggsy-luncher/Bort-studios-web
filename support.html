@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   Support | Global Era RP
+  </title>
+  <link href="styles.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <div id="site-header">
+  </div>
+  <main class="page-wrap narrow">
+   <section class="page-hero">
+    <span class="eyebrow">
+     GERP HELP DESK
+    </span>
+    <h1>
+     How can we
+     <span>
+      help?
+     </span>
+    </h1>
+    <p>
+     Send a support request. Sign in first so the request can be associated with your account.
+    </p>
+   </section>
+   <section class="auth-card">
+    <form id="ticket-form">
+     <label for="ticket-subject">
+      Subject
+     </label>
+     <input id="ticket-subject" maxlength="100" placeholder="What do you need help with?" required=""/>
+     <label for="ticket-category">
+      Category
+     </label>
+     <select id="ticket-category">
+      <option>
+       Website account
+      </option>
+      <option>
+       Game / play test
+      </option>
+      <option>
+       Bug report
+      </option>
+      <option>
+       Community
+      </option>
+      <option>
+       Other
+      </option>
+     </select>
+     <label for="ticket-message">
+      Details
+     </label>
+     <textarea id="ticket-message" maxlength="3000" minlength="10" placeholder="Describe your issue without sharing passwords or private payment details." required="" rows="6"></textarea>
+     <button class="btn btn-primary full" type="submit">
+      Submit request &nearrow;
+     </button>
+     <p class="form-message" id="ticket-message-status" role="status">
+     </p>
+    </form>
+   </section>
+   <div class="notice">
+    <b>
+     Need an immediate community response?
+    </b>
+    <p>
+     Use the official community links. Never share your password or verification codes with anyone claiming to be staff.
+    </p>
+    <a class="text-link" href="community.html">
+     Community links &nearrow;
+    </a>
+   </div>
+  </main>
+  <div id="site-footer">
+  </div>
+  <script src="js/app.js" type="module">
+  </script>
+ </body>
+</html>
