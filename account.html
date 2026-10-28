@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   Player Account | Global Era RP
+  </title>
+  <link href="styles.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <div id="site-header">
+  </div>
+  <main class="page-wrap narrow">
+   <section class="page-hero">
+    <span class="eyebrow">
+     PLAYER ACCESS
+    </span>
+    <h1>
+     Your world.
+     <br/>
+     <span>
+      Your account.
+     </span>
+    </h1>
+    <p>
+     Create an account or sign in to the website. Game-account linking is not implemented.
+    </p>
+   </section>
+   <section class="auth-card">
+    <div class="auth-tabs">
+     <button class="tab active" data-mode="login">
+      Sign in
+     </button>
+     <button class="tab" data-mode="register">
+      Create account
+     </button>
+    </div>
+    <form id="auth-form">
+     <label for="email">
+      Email address
+     </label>
+     <input autocomplete="email" id="email" name="email" placeholder="you@example.com" required="" type="email"/>
+     <label for="password">
+      Password
+     </label>
+     <input autocomplete="current-password" id="password" minlength="8" name="password" placeholder="At least 8 characters" required="" type="password"/>
+     <div hidden="" id="confirm-wrap">
+      <label for="confirm-password">
+       Confirm password
+      </label>
+      <input autocomplete="new-password" id="confirm-password" minlength="8" placeholder="Repeat password" type="password"/>
+     </div>
+     <button class="btn btn-primary full" id="auth-submit" type="submit">
+      Sign in &nearrow;
+     </button>
+     <button class="text-button" id="reset-password" type="button">
+      Forgot password?
+     </button>
+     <p class="form-message" id="auth-message" role="status">
+     </p>
+    </form>
+    <div hidden="" id="account-panel">
+     <p id="account-email">
+     </p>
+     <button class="btn btn-ghost full" id="sign-out">
+      Sign out
+     </button>
+    </div>
+   </section>
+   <p class="fine-print">
+    Authentication only works after you add your Firebase web configuration and enable Email/Password sign-in in Firebase Console.
+   </p>
+  </main>
+  <div id="site-footer">
+  </div>
+  <script src="js/app.js" type="module">
+  </script>
+ </body>
+</html>
