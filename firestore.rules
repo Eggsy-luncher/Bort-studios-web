@@ -1,0 +1,47 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function isAdmin() { return signedIn() && request.auth.token.admin == true; }
+
+    // Public can read published announcements. Only trusted admins may publish.
+    match /announcements/{announcementId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    // Players may create tickets for themselves; users cannot read tickets in this starter.
+    // Staff ticket-management should be added with a carefully scoped admin/staff claim.
+    match /supportTickets/{ticketId} {
+      allow create: if signedIn()
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.keys().hasOnly(['uid','email','subject','category','message','status','createdAt'])
+        && request.resource.data.subject is string
+        && request.resource.data.subject.size() > 0
+        && request.resource.data.subject.size() <= 100
+        && request.resource.data.message is string
+        && request.resource.data.message.size() >= 10
+        && request.resource.data.message.size() <= 3000
+        && request.resource.data.status == 'open';
+      allow read, update, delete: if isAdmin();
+    }
+
+
+    // Daily reward claim records only. This does NOT grant game items or currency.
+    // The trusted game backend must verify claims and deliver rewards separately.
+    match /dailyClaims/{claimId} {
+      allow create: if signedIn()
+        && request.resource.data.uid == request.auth.uid
+        && claimId.matches(request.auth.uid + '_[0-9]{4}-[0-9]{2}-[0-9]{2}')
+        && request.resource.data.keys().hasOnly(['uid','claimedDate','rewardId','status','createdAt'])
+        && request.resource.data.claimedDate is string
+        && request.resource.data.rewardId == 'daily_login_100_credits'
+        && request.resource.data.status == 'pending_game_integration';
+      allow read: if signedIn() && resource.data.uid == request.auth.uid;
+      allow update, delete: if false;
+    }
+
+    // Deny everything not explicitly allowed.
+    match /{document=**} { allow read, write: if false; }
+  }
+}

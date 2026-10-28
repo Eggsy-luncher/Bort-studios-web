@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   Admin | Global Era RP
+  </title>
+  <link href="styles.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <div id="site-header">
+  </div>
+  <main class="page-wrap narrow">
+   <section class="page-hero">
+    <span class="eyebrow">
+     STAFF CONSOLE
+    </span>
+    <h1>
+     Admin
+     <span>
+      workspace.
+     </span>
+    </h1>
+    <p>
+     Restricted area. Access is controlled by a Firebase custom claim named
+     <code>
+      admin
+     </code>
+     ; a normal account is not an administrator.
+    </p>
+   </section>
+   <section class="auth-card">
+    <p id="admin-status" role="status">
+     Checking your access&hellip;
+    </p>
+    <form hidden="" id="announcement-form">
+     <label for="announcement-title">
+      Announcement title
+     </label>
+     <input id="announcement-title" maxlength="120" required=""/>
+     <label for="announcement-body">
+      Announcement text
+     </label>
+     <textarea id="announcement-body" maxlength="5000" required="" rows="5"></textarea>
+     <label for="announcement-category">
+      Category
+     </label>
+     <select id="announcement-category">
+      <option>
+       News
+      </option>
+      <option>
+       Play Test
+      </option>
+      <option>
+       Maintenance
+      </option>
+      <option>
+       Community
+      </option>
+     </select>
+     <button class="btn btn-primary full" type="submit">
+      Publish announcement
+     </button>
+     <p class="form-message" id="admin-message" role="status">
+     </p>
+    </form>
+   </section>
+   <div class="notice">
+    <b>
+     Important setup
+    </b>
+    <p>
+     Custom admin claims must be assigned securely using the Firebase Admin SDK in a trusted environment. Never give admin rights by writing a field from the browser or by trusting a hidden button.
+    </p>
+   </div>
+  </main>
+  <div id="site-footer">
+  </div>
+  <script src="js/app.js" type="module">
+  </script>
+ </body>
+</html>
